@@ -1,6 +1,5 @@
 package org.semicolonlab.infrastructure.output.exceptionhandler.analyzers;
 
-import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.semicolonlab.infrastructure.output.exceptionhandler.analysis.AbstractExceptionAnalyzer;
@@ -10,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.regex.Pattern;
+
 @Slf4j
 public class DatabaseExceptionAnalyzer extends AbstractExceptionAnalyzer {
 

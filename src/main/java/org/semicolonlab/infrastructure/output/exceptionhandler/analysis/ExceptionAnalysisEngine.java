@@ -18,12 +18,12 @@ public class ExceptionAnalysisEngine {
     public ExceptionAnalysisResult analyzeException(Throwable exceptionThrown) {
         log.debug("Analyzing exception >>>>>>>>>>>>>>>>>>>: {}", exceptionThrown.getClass().getName());
         return analyzers.stream()
-                .filter(a -> a.canAnalyze(exceptionThrown))
+                .filter(analysisStrategy -> analysisStrategy.canAnalyze(exceptionThrown))
                 .min(Comparator.comparingInt(ExceptionAnalysisStrategy::getPriority))
-                .map(a -> {
-                    try { return a.analyze(exceptionThrown); }
-                    catch (Exception e) {
-                        log.warn("Analyzer {} failed", a.getClass().getSimpleName(), e);
+                .map(exceptionAnalysisStrategy -> {
+                    try { return exceptionAnalysisStrategy.analyze(exceptionThrown); }
+                    catch (Exception exception) {
+                        log.warn("Analyzer {} failed", exceptionAnalysisStrategy.getClass().getSimpleName(), exception);
                         return null;
                     }
                 })

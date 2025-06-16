@@ -64,7 +64,7 @@ public class UniversalStartupFailureAnalyzer  extends AbstractFailureAnalyzer<Th
         description.append("📂 Category: ").append(result.getCategory()).append("\n");
         description.append("🔍 Root Cause: ").append(result.getRootCause()).append("\n");
 
-        if (result.getContext() != null && !result.getContext().isEmpty()) {
+        if (result.getContext()  != null && !result.getContext().isEmpty()) {
             description.append("\n📊 Context:\n");
             result.getContext().forEach((key, value) ->
                     description.append("  • ").append(key).append(": ").append(value).append("\n"));
