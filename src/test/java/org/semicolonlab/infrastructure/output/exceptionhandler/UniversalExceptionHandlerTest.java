@@ -36,7 +36,6 @@ class UniversalExceptionHandlerTest {
     }
 
     @Test
-    @DisplayName("Should handle SemicolonLabException with all properties correctly")
     void handleSemicolonLabExceptionTest() {
         SemicolonLabException exception = new SemicolonLabException(
                 "User already exists",
