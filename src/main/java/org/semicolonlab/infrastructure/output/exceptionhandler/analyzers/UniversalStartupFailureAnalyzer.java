@@ -1,6 +1,5 @@
 package org.semicolonlab.infrastructure.output.exceptionhandler.analyzers;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.semicolonlab.infrastructure.output.config.ExceptionProperties;
@@ -9,7 +8,6 @@ import org.semicolonlab.infrastructure.output.exceptionhandler.analysis.Exceptio
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,15 +44,15 @@ public class UniversalStartupFailureAnalyzer  extends AbstractFailureAnalyzer<Th
         }
     }
 
-    private ExceptionAnalysisResult analyzeException(Throwable ex) {
+    private ExceptionAnalysisResult analyzeException(Throwable throwable) {
         return analyzers.stream()
-                .filter(analyzer -> analyzer.canAnalyze(ex))
+                .filter(analyzer -> analyzer.canAnalyze(throwable))
                 .findFirst()
                 .map(analyzer -> {
                     log.debug("Using analyzer: {}", analyzer.getClass().getSimpleName());
-                    return analyzer.analyze(ex);
+                    return analyzer.analyze(throwable);
                 })
-                .orElseGet(() -> defaultAnalysis(ex));
+                .orElseGet(() -> defaultAnalysis(throwable));
     }
 
     private String formatDescription(ExceptionAnalysisResult result) {

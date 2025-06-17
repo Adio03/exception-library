@@ -14,6 +14,7 @@ import java.util.Map;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
+@ToString
 @AllArgsConstructor
 public class ErrorResponse {
 

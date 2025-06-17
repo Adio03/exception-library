@@ -1,5 +1,6 @@
 package org.semicolonlab.infrastructure.output.exceptionhandler;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import org.semicolonlab.domain.exceptions.SemicolonLabException;

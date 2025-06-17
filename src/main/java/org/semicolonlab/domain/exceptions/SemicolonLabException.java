@@ -15,12 +15,11 @@ public class SemicolonLabException extends NestedRuntimeException {
     private String title;
     private Map<String, Object> context;
 
-    public SemicolonLabException(String message, HttpStatus status, String errorCode, String title, Map<String, Object> context) {
+    public SemicolonLabException(String message, HttpStatus status,String title) {
         super(message);
         this.status = status;
-        this.errorCode = errorCode;
         this.title = title;
-        this.context = context;
+
     }
 
     public SemicolonLabException(String message, Throwable cause, HttpStatus status, String errorCode, String title, Map<String, Object> context) {
